@@ -1,4 +1,4 @@
-# TP3 - SOCKETS
+# TP3 - Sockets
 
 # Autores
 - [Francisco Bernad](https://github.com/FrBernad)
