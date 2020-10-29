@@ -67,7 +67,7 @@ int level3(FILE* clientFile, char** response, size_t size) {
 
 int level4(FILE* clientFile, char** response, size_t size) {
     if (write(999, "fk3wfLCm3QvS", 12) == -1) {
-        perror("write: ");
+        perror("write");
     }
 
     printf("EBADF...\n\n");
@@ -83,7 +83,7 @@ int level4(FILE* clientFile, char** response, size_t size) {
 
 int level5(FILE* clientFile, char** response, size_t size) {
     if (too_easy) {
-        printf("respuesta = strings:200\n\n");
+        printf("respuesta = strings:204\n\n");
         printf(
             "----- PREGUNTA PARA INVESTIGAR -----\n"
             "¿Cómo garantiza TCP que los paquetes llegan en orden y no se pierden?\n");
