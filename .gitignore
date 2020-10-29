@@ -50,5 +50,10 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+#custom
 Consigna
 Consigna.pdf
+CODE
+
+CATEDRA/
