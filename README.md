@@ -11,8 +11,9 @@ Compile the program and try to solve all the different ***challenges*** the ***s
 # Compilation
 
 Execute `make` or `make all` command on your shell to compile all source files.
-This will create one executable file: 
+This will create two executable file: 
   + **server**
+  + **client**
     
 To remove these files, run `make clean` on the directory make was executed
 
