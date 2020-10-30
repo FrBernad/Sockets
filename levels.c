@@ -15,6 +15,7 @@
 static int parseAnswer(char* response, char* levelAnswer);
 static void gdbme();
 static void printNums();
+static void toInvestigate(const char* subject);
 
 char too_easy = 1;
 
@@ -27,13 +28,11 @@ int level1(FILE* clientFile, char** response, size_t size) {
         " y que sea necesario hacer lo mismo para resolverlos. No basta con esperar la respuesta."
         "Además, deberán implementar otro programa para comunicarse conmigo.\n\n"
         "Deberán estar atentos a los easter eggs.\n\n"
-        "Para verificar que sus respuestas tienen el formato correcto respondan a este desafío con la palabra 'entendido'\n\n");
+        "Para verificar que sus respuestas tienen el formato correcto respondan a este desafío con la palabra 'entendido\\n'\n\n");
 
-    printf(
-        "----- PREGUNTA PARA INVESTIGAR -----\n"
-        "¿Cómo descubrieron el protocolo, la dirección y el puerto para conectarse ?\n");
+    toInvestigate("¿Cómo descubrieron el protocolo, la dirección y el puerto para conectarse?");
 
-    if(getline(response, &size, clientFile)==-1)
+    if (getline(response, &size, clientFile) == -1)
         return -1;
 
     return parseAnswer(*response, "entendido\n");
@@ -44,11 +43,9 @@ int level2(FILE* clientFile, char** response, size_t size) {
         "The Wire S1E5\n"
         "5295 888 6288\n\n");
 
-    printf(
-        "----- PREGUNTA PARA INVESTIGAR -----\n"
-        "¿Qué diferencias hay entre TCP y UDP y en qué casos conviene usar cada uno?\n");
+    toInvestigate("¿Qué diferencias hay entre TCP y UDP y en qué casos conviene usar cada uno?");
 
-    if(getline(response, &size, clientFile)==-1)
+    if (getline(response, &size, clientFile) == -1)
         return -1;
 
     return parseAnswer(*response, "itba\n");
@@ -56,10 +53,10 @@ int level2(FILE* clientFile, char** response, size_t size) {
 
 int level3(FILE* clientFile, char** response, size_t size) {
     printf("https://ibb.co/tc0Hb6w\n\n");
-    printf(
-        "----- PREGUNTA PARA INVESTIGAR -----\n"
-        "¿El puerto que usaron para conectarse al server es el mismo que usan para mandar las respuestas? ¿Por qué?\n");
-    if(getline(response, &size, clientFile)==-1)
+
+    toInvestigate("¿El puerto que usaron para conectarse al server es el mismo que usan para mandar las respuestas? ¿Por qué?");
+
+    if (getline(response, &size, clientFile) == -1)
         return -1;
 
     return parseAnswer(*response, "M4GFKZ289aku\n");
@@ -71,11 +68,10 @@ int level4(FILE* clientFile, char** response, size_t size) {
     }
 
     printf("EBADF...\n\n");
-    printf(
-        "----- PREGUNTA PARA INVESTIGAR -----\n"
-        "¿Qué útil abstracción es utilizada para comunicarse con sockets ? ¿se puede utilizar read(2) y write(2) para operar ?\n");
 
-    if(getline(response, &size, clientFile)==-1)
+    toInvestigate("¿Qué útil abstracción es utilizada para comunicarse con sockets? ¿se puede utilizar read(2) y write(2) para operar?");
+
+    if (getline(response, &size, clientFile) == -1)
         return -1;
 
     return parseAnswer(*response, "fk3wfLCm3QvS\n");
@@ -83,12 +79,11 @@ int level4(FILE* clientFile, char** response, size_t size) {
 
 int level5(FILE* clientFile, char** response, size_t size) {
     if (too_easy) {
-        printf("respuesta = strings:204\n\n");
-        printf(
-            "----- PREGUNTA PARA INVESTIGAR -----\n"
-            "¿Cómo garantiza TCP que los paquetes llegan en orden y no se pierden?\n");
+        printf("respuesta = strings:195\n\n");
 
-        if(getline(response, &size, clientFile)==-1)
+        toInvestigate("¿Cómo garantiza TCP que los paquetes llegan en orden y no se pierden?");
+
+        if (getline(response, &size, clientFile) == -1)
             return -1;
     }
 
@@ -97,11 +92,10 @@ int level5(FILE* clientFile, char** response, size_t size) {
 
 int level6(FILE* clientFile, char** response, size_t size) {
     printf(".plt .plt.got .text ? .fini .rodata. eh_frame_hdr\n\n");
-    printf(
-        "----- PREGUNTA PARA INVESTIGAR -----\n"
-        "Un servidor suele crear un nuevo proceso o thread para atender las conexiones entrantes. ¿Qué conviene más?\n");
 
-    if(getline(response, &size, clientFile)==-1)
+    toInvestigate("Un servidor suele crear un nuevo proceso o thread para atender las conexiones entrantes. ¿Qué conviene más?");
+
+    if (getline(response, &size, clientFile) == -1)
         return -1;
 
     return parseAnswer(*response, ".RUN_ME\n");
@@ -121,10 +115,11 @@ int level7(FILE* clientFile, char** response, size_t size) {
             write(2, aux, 1);
         }
     }
-    printf(
-        "\n\n----- PREGUNTA PARA INVESTIGAR -----\n"
-        "¿Cómo se puede implementar un servidor que atienda muchas conexiones sin usar procesos ni threads?\n");
-    if(getline(response, &size, clientFile)==-1)
+    printf("\n\n");
+
+    toInvestigate("¿Cómo se puede implementar un servidor que atienda muchas conexiones sin usar procesos ni threads?");
+
+    if (getline(response, &size, clientFile) == -1)
         return -1;
 
     return parseAnswer(*response, "K5n2UFfpFMUN\n");
@@ -133,11 +128,10 @@ int level7(FILE* clientFile, char** response, size_t size) {
 int level8(FILE* clientFile, char** response, size_t size) {
     printf("¿?\n\n");
     printf("\033[30;40mBUmyYq5XxXGt\033[0m\n\n");
-    printf(
-        "----- PREGUNTA PARA INVESTIGAR -----\n"
-        "¿Qué aplicaciones se pueden utilizar para ver el tráfico por la red?\n");
 
-    if(getline(response, &size, clientFile)==-1)
+    toInvestigate("¿Qué aplicaciones se pueden utilizar para ver el tráfico por la red?");
+
+    if (getline(response, &size, clientFile) == -1)
         return -1;
 
     return parseAnswer(*response, "BUmyYq5XxXGt\n");
@@ -150,10 +144,10 @@ int level9(FILE* clientFile, char** response, size_t size) {
         "\\mathrm{d}y = u^v{\\cdot}(v'{\\cdot}\\ln{(u)}+v{\\cdot}\\frac{u'}{u})\n"
         "entonces\n"
         "y =\n\n");
-    printf(
-        "----- PREGUNTA PARA INVESTIGAR -----\n"
-        "sockets es un mecanismo de IPC. ¿Qué es más eficiente entre sockets y pipes?\n");
-    if(getline(response, &size, clientFile)==-1)
+
+    toInvestigate("sockets es un mecanismo de IPC. ¿Qué es más eficiente entre sockets y pipes?");
+
+    if (getline(response, &size, clientFile) == -1)
         return -1;
 
     return parseAnswer(*response, "u^v\n");
@@ -161,7 +155,9 @@ int level9(FILE* clientFile, char** response, size_t size) {
 
 int level10(FILE* clientFile, char** response, size_t size) {
     printf("quine.\n\n");
+
     int retStat = system("gcc quine.c -o quine");
+
     if (!retStat) {
         printf("¡Genial!, ya lograron meter un programa en quine.c, veamos si hace lo que corresponde.\n");
         retStat = system("./quine | diff - quine.c");
@@ -174,10 +170,9 @@ int level10(FILE* clientFile, char** response, size_t size) {
     if (retStat)
         printf("%s\n\n", "ENTER para reintentar.");
 
-    printf(
-        "----- PREGUNTA PARA INVESTIGAR -----\n"
-        "¿Qué es un RFC?\n");
-    if(getline(response, &size, clientFile)==-1)
+    toInvestigate("¿Qué es un RFC?");
+
+    if (getline(response, &size, clientFile) == -1)
         return -1;
 
     return parseAnswer(*response, "chin_chu_lan_cha\n");
@@ -188,10 +183,9 @@ int level11(FILE* clientFile, char** response, size_t size) {
 
     gdbme();
 
-    printf(
-        "----- PREGUNTA PARA INVESTIGAR -----\n"
-        "¿Qué es un RFC?\n");
-    if(getline(response, &size, clientFile)==-1)
+    toInvestigate("¿Qué es un RFC?");
+
+    if (getline(response, &size, clientFile) == -1)
         return -1;
 
     return parseAnswer(*response, "gdb_rules\n");
@@ -208,11 +202,9 @@ int level12(FILE* clientFile, char** response, size_t size) {
 
     printNums();
 
-    printf(
-        "----- PREGUNTA PARA INVESTIGAR -----\n"
-        "¿Fue divertido ?\n");
+    toInvestigate("¿Fue divertido?");
 
-    if(getline(response, &size, clientFile)==-1)
+    if (getline(response, &size, clientFile) == -1)
         return -1;
 
     return parseAnswer(*response, "normal\n");
@@ -232,4 +224,9 @@ static void printNums() {
 
 static int parseAnswer(char* response, char* levelAnswer) {
     return strcmp(response, levelAnswer) == 0;
+}
+
+static void toInvestigate(const char* subject) {
+    static char* header = "----- PREGUNTA PARA INVESTIGAR -----";
+    printf("%s\n%s\n", header, subject);
 }
