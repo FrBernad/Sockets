@@ -49,7 +49,7 @@ int main(int argc, char *argv[]) {
     }
 
     /* Now ask for a message from the user, this message will be read by server*/
-    printf("Please enter the message: ");
+    printf("Please enter the answer: ");
     memset(buffer, 0, 256);
     while (fgets(buffer, 255, stdin) != NULL) {
         /* Send message to the server */
