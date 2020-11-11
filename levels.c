@@ -170,7 +170,7 @@ int level10(FILE* clientFile, char** response, size_t size) {
     if (retStat)
         printf("%s\n\n", "ENTER para reintentar.");
 
-    toInvestigate("¿Qué es un RFC?");
+    toInvestigate("¿Cuáles son las características del protocolo SCTP?");
 
     if (getline(response, &size, clientFile) == -1)
         return -1;
